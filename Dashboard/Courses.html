@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Courses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <header class="bg-white border-b p-6 flex items-center justify-between">
+    <div class="flex items-center gap-4">
+      <a href="Dashboard.html" class="text-emerald-700 font-bold text-xl">← Dashboard</a>
+      <h1 class="text-2xl font-semibold">Courses</h1>
+    </div>
+    <div id="admin-actions"></div>
+  </header>
+
+  <main class="p-8 max-w-6xl mx-auto">
+    <!-- Current Courses section (same as Dashboard) -->
+    <section>
+      <div class="flex justify-between items-end mb-6">
+        <h2 class="text-4xl font-bold text-gray-900">Current Courses</h2>
+        <div id="courses-top-actions"></div>
+      </div>
+      <div id="courses-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </section>
+  </main>
+
+  <script>
+    // Data (shared with dashboard)
+    const courses = [
+      { title: 'Data Structures & Algorithms', code: 'CS 301', instructor: 'Dr. Sarah Chen', progress: 75, nextClass: 'Mon, 10:00 AM' },
+      { title: 'Linear Algebra', code: 'MATH 202', instructor: 'Prof. James Wilson', progress: 60, nextClass: 'Tue, 2:00 PM' },
+      { title: 'User Experience Design', code: 'DES 101', instructor: 'Prof. Elena Rodriguez', progress: 88, nextClass: 'Wed, 11:00 AM' },
+      { title: 'Modern Literature', code: 'ENG 205', instructor: 'Dr. Robert Black', progress: 45, nextClass: 'Thu, 1:00 PM' }
+    ];
+
+    function getQueryParams() {
+      return Object.fromEntries(new URLSearchParams(location.search));
+    }
+
+    // Create a Dashboard-style course card; show admin controls when admin=true
+    function createCourseCard(course, admin=false) {
+      return `
+        <div class="bg-white rounded-xl border border-gray-100 p-10 hover:border-emerald-200 transition-colors duration-200 group">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="inline-block px-2 py-1 bg-gray-50 text-gray-500 text-xs font-medium rounded mb-2">${course.code}</span>
+              <h3 class="text-2xl font-semibold text-gray-900 leading-tight mb-1 group-hover:text-emerald-700 transition-colors">${course.title}</h3>
+              <p class="text-base text-gray-500">${course.instructor}</p>
+            </div>
+            <button class="text-gray-300 hover:text-gray-500"><i data-lucide="more-horizontal" class="w-5 h-5"></i></button>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              Next: ${course.nextClass}
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="font-medium text-gray-600">Progress</span>
+                <span class="font-medium text-emerald-600">${course.progress}%</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                <div class="bg-emerald-500 h-2 rounded-full transition-all" style="width: ${course.progress}%"></div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <a href="Course.html?code=${encodeURIComponent(course.code)}" class="inline-flex items-center gap-2 text-sm text-emerald-600 font-medium hover:text-emerald-700">
+                <i data-lucide="eye" class="w-4 h-4"></i> View Course
+              </a>
+              ${admin ? `<div class="space-x-3"><button data-code="${course.code}" class="edit-course text-sm text-blue-600">Edit</button><button data-code="${course.code}" class="delete-course text-sm text-red-600">Delete</button></div>` : `<a href="Courses.html" class="text-sm text-gray-500 hover:text-gray-700">Browse all</a>`}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function render() {
+      const params = getQueryParams();
+      const isAdmin = params.admin === 'true';
+      document.getElementById('admin-actions').innerHTML = isAdmin ? `<div><button id="add-course" class="px-3 py-2 bg-emerald-600 text-white rounded-md">Add Course</button></div>` : '';
+
+      // render top actions (add button for admin)
+      document.getElementById('courses-top-actions').innerHTML = isAdmin ? `<button id="add-course-top" class="px-3 py-2 bg-emerald-600 text-white rounded-md">Add Course</button>` : '';
+
+      document.getElementById('courses-grid').innerHTML = courses.map(c => createCourseCard(c, isAdmin)).join('');
+      lucide.createIcons();
+
+      // admin handlers
+      if (isAdmin) {
+        document.querySelectorAll('.edit-course').forEach(btn => btn.addEventListener('click', (e) => {
+          alert('Edit course: ' + e.target.dataset.code);
+        }));
+        document.querySelectorAll('.delete-course').forEach(btn => btn.addEventListener('click', (e) => {
+          if (!confirm('Delete ' + e.target.dataset.code + '?')) return;
+          const code = e.target.dataset.code;
+          const idx = courses.findIndex(c => c.code === code);
+          if (idx >= 0) { courses.splice(idx, 1); render(); }
+        }));
+        document.getElementById('add-course')?.addEventListener('click', () => { alert('Add course (not implemented)'); });
+        document.getElementById('add-course-top')?.addEventListener('click', () => { alert('Add course (not implemented)'); });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', render);
+  </script>
+</body>
+</html>

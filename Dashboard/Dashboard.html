@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Academia Dashboard</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body class="bg-gray-50">
+
+  <div class="min-h-screen bg-white flex">
+    <!-- Sidebar (larger font version) -->
+    <aside id="sidebar" class="w-72 h-screen fixed left-0 top-0 bg-white border-r border-gray-100 flex flex-col z-10">
+      <div class="p-8 pb-12">
+        <div class="flex items-center gap-3 text-emerald-700 font-bold text-2xl tracking-tight">
+          <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-emerald-600"></i>
+          </div>
+          Academia
+        </div>
+      </div>
+
+      <nav class="flex-1 space-y-1 px-4" id="main-nav"></nav>
+
+      <div class="p-4 border-t border-gray-50 space-y-1 px-4" id="bottom-nav"></div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 ml-72 min-h-screen">
+      <!-- Header -->
+      <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md border-b border-gray-50 px-10 py-6 flex justify-between items-center text-base">
+        <div class="flex items-center gap-4 w-96">
+          <div class="relative w-full">
+            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+            <input id="global-search" type="text" placeholder="Search courses, assignments..."
+              class="w-full pl-12 pr-4 py-3 bg-gray-50 border-none rounded-lg text-base focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:bg-white transition-all" />
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex items-center gap-2 ml-4">
+            <select id="assignment-filter-top-status" class="text-sm border rounded-md px-2 py-1 bg-white">
+              <option value="all">All</option>
+              <option value="pending">Pending</option>
+              <option value="submitted">Submitted</option>
+              <option value="late">Late</option>
+            </select>
+            <input id="assignment-filter-top-search" type="text" placeholder="Filter assignments..." class="text-sm border rounded-md px-2 py-1" />
+            <button id="assignment-filter-top-clear" class="text-sm text-gray-500 hover:text-gray-700">Clear</button>
+          </div>
+          <button class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+          </button>
+          <div class="w-10 h-10 rounded-full bg-emerald-100 border-2 border-emerald-200 overflow-hidden">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Profile" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="p-12 max-w-8xl mx-auto space-y-12">
+        <!-- Profile Card -->
+        <section id="profile-section"></section>
+
+        <!-- Current Courses -->
+        <section>
+          <div class="flex justify-between items-end mb-6">
+            <h2 class="text-4xl font-bold text-gray-900">Current Courses</h2>
+            <a href="Courses.html" class="text-sm text-emerald-600 font-medium hover:text-emerald-700">
+              View All Courses
+            </a>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="courses-grid"></div>
+        </section>
+
+        <!-- Assignments + Grades -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2" id="assignments-section"></div>
+          <div class="lg:col-span-1" id="grades-section"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Data
+    const courses = [
+      { title: 'Data Structures & Algorithms', code: 'CS 301', instructor: 'Dr. Sarah Chen', progress: 75, nextClass: 'Mon, 10:00 AM' },
+      { title: 'Linear Algebra', code: 'MATH 202', instructor: 'Prof. James Wilson', progress: 60, nextClass: 'Tue, 2:00 PM' },
+      { title: 'User Experience Design', code: 'DES 101', instructor: 'Prof. Elena Rodriguez', progress: 88, nextClass: 'Wed, 11:00 AM' },
+      { title: 'Modern Literature', code: 'ENG 205', instructor: 'Dr. Robert Black', progress: 45, nextClass: 'Thu, 1:00 PM' }
+    ];
+
+    const assignments = [
+      { id: '1', course: 'CS 301', title: 'Algorithm Analysis Paper', dueDate: 'Oct 24, 11:59 PM', status: 'pending' },
+      { id: '2', course: 'MATH 202', title: 'Linear Algebra Problem Set 4', dueDate: 'Oct 25, 5:00 PM', status: 'pending' },
+      { id: '3', course: 'DES 101', title: 'User Persona Research', dueDate: 'Oct 22, 11:59 PM', status: 'submitted' },
+      { id: '4', course: 'CS 301', title: 'Binary Tree Implementation', dueDate: 'Oct 20, 11:59 PM', status: 'late' },
+      { id: '5', course: 'ENG 205', title: 'Modernist Poetry Essay', dueDate: 'Oct 28, 11:59 PM', status: 'pending' }
+    ];
+
+    // Sidebar Nav Items
+    const mainNavItems = [
+      { icon: 'layout-dashboard', label: 'Dashboard', active: true, href: 'Dashboard.html' },
+      { icon: 'book-open', label: 'My Courses', active: false, href: 'Courses.html' },
+      { icon: 'file-text', label: 'Assignments', active: false, href: 'Dashboard.html#assignments-section' },
+      { icon: 'graduation-cap', label: 'Grades', active: false, href: 'Dashboard.html#grades-section' },
+      { icon: 'calendar', label: 'Schedule', active: false },
+      { icon: 'shield', label: 'Admin', active: false, href: 'Courses.html?admin=true' }
+    ];
+
+    const bottomNavItems = [
+      { icon: 'settings', label: 'Settings', active: false },
+      { icon: 'log-out', label: 'Sign Out', active: false }
+    ];
+
+    function createNavItem(item) {
+      const activeClasses = item.active
+        ? 'bg-gradient-to-r from-emerald-50 to-white text-emerald-700 border-r-4 border-emerald-500'
+        : 'text-gray-600 hover:text-emerald-700 hover:bg-emerald-50/70';
+      const iconClasses = item.active ? 'text-emerald-600' : 'text-gray-500 group-hover:text-emerald-600';
+      if (item.href) {
+        return `
+          <a href="${item.href}" class="w-full flex items-center gap-4 px-6 py-4 text-base font-medium transition-all duration-200 rounded-lg group ${activeClasses}">
+            <i data-lucide="${item.icon}" class="w-6 h-6 ${iconClasses}"></i>
+            ${item.label}
+          </a>
+        `;
+      }
+      return `
+        <button class="w-full flex items-center gap-4 px-6 py-5 text-lg font-semibold transition-all duration-200 rounded-lg group ${activeClasses}">
+          <i data-lucide="${item.icon}" class="w-7 h-7 ${iconClasses}"></i>
+          ${item.label}
+        </button>
+      `;
+    }
+
+    function createCourseCard(course) {
+      return `
+        <div class="bg-white rounded-xl border border-gray-100 p-10 hover:border-emerald-200 transition-colors duration-200 group">
+          <div class="flex justify-between items-start mb-4">
+            <div>
+              <span class="inline-block px-2 py-1 bg-gray-50 text-gray-500 text-xs font-medium rounded mb-2">${course.code}</span>
+              <h3 class="text-2xl font-semibold text-gray-900 leading-tight mb-1 group-hover:text-emerald-700 transition-colors">${course.title}</h3>
+              <p class="text-base text-gray-500">${course.instructor}</p>
+            </div>
+            <button class="text-gray-300 hover:text-gray-500"><i data-lucide="more-horizontal" class="w-5 h-5"></i></button>
+          </div>
+          <div class="space-y-4">
+            <div class="flex items-center gap-2 text-sm text-gray-500">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+              Next: ${course.nextClass}
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-1.5">
+                <span class="font-medium text-gray-600">Progress</span>
+                <span class="font-medium text-emerald-600">${course.progress}%</span>
+              </div>
+              <div class="w-full bg-gray-100 rounded-full h-2 overflow-hidden">
+                <div class="bg-emerald-500 h-2 rounded-full transition-all" style="width: ${course.progress}%"></div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between mt-4">
+              <a href="Course.html?code=${encodeURIComponent(course.code)}" class="inline-flex items-center gap-2 text-sm text-emerald-600 font-medium hover:text-emerald-700">
+                <i data-lucide="eye" class="w-4 h-4"></i> View Course
+              </a>
+              <a href="Courses.html" class="text-sm text-gray-500 hover:text-gray-700">Browse all</a>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function getStatusBadge(status) {
+      if (status === 'pending') return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100"><i data-lucide="clock" class="w-3 h-3"></i> Pending</span>`;
+      if (status === 'submitted') return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100"><i data-lucide="check-circle-2" class="w-3 h-3"></i> Submitted</span>`;
+      if (status === 'late') return `<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-50 text-red-700 border border-red-100"><i data-lucide="alert-circle" class="w-3 h-3"></i> Late</span>`;
+      return '';
+    }
+
+    // Render courses with optional search query
+    function renderCoursesGrid(q = '') {
+      const query = (q || '').trim().toLowerCase();
+      const filtered = courses.filter(c => {
+        if (!query) return true;
+        return (c.title + ' ' + c.code + ' ' + c.instructor + ' ' + c.nextClass).toLowerCase().includes(query);
+      });
+      const html = filtered.length ? filtered.map(createCourseCard).join('') : `<div class="col-span-full text-gray-500 p-6">No courses found.</div>`;
+      document.getElementById('courses-grid').innerHTML = html;
+      lucide.createIcons();
+    }
+
+    function renderAll() {
+      // Sidebar
+      document.getElementById('main-nav').innerHTML = mainNavItems.map(createNavItem).join('');
+      document.getElementById('bottom-nav').innerHTML = bottomNavItems.map(createNavItem).join('');
+
+      // Profile Card
+      document.getElementById('profile-section').innerHTML = `
+        <div class="bg-white rounded-xl border border-emerald-100 p-10 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-8">
+          <div class="relative">
+            <div class="w-28 h-28 rounded-full bg-emerald-50 border-2 border-emerald-100 flex items-center justify-center text-emerald-600">
+              <i data-lucide="user" class="w-12 h-12"></i>
+            </div>
+            <div class="absolute bottom-0 right-0 w-6 h-6 bg-emerald-500 border-2 border-white rounded-full"></div>
+          </div>
+          <div class="flex-1 text-center md:text-left">
+            <h1 class="text-4xl font-bold text-gray-900 mb-1">Tarek Magdy</h1>
+            <p class="text-gray-500 mb-4">Computer Science • Junior Year</p>
+            <div class="flex flex-wrap justify-center md:justify-start gap-4 md:gap-8">
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <div class="p-1.5 bg-gray-50 rounded-md"><i data-lucide="mail" class="w-4 h-4 text-gray-400"></i></div>
+                Tarek@muc.edu.eg
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <div class="p-1.5 bg-emerald-50 rounded-md"><i data-lucide="award" class="w-4 h-4 text-emerald-600"></i></div>
+                <span class="font-medium text-emerald-700">GPA: 3.8</span>
+              </div>
+            </div>
+          </div>
+          <div class="hidden md:block w-px h-24 bg-gray-100 mx-4"></div>
+          <div class="flex gap-8">
+            <div class="text-center"><div class="text-3xl font-bold text-gray-900">12</div><div class="text-xs text-gray-400 uppercase tracking-wider font-medium">Credits</div></div>
+            <div class="text-center"><div class="text-3xl font-bold text-gray-900">4</div><div class="text-xs text-gray-400 uppercase tracking-wider font-medium">Courses</div></div>
+            <div class="text-center"><div class="text-3xl font-bold text-gray-900">92%</div><div class="text-xs text-gray-400 uppercase tracking-wider font-medium">Avg</div></div>
+          </div>
+        </div>
+      `;
+
+      // Course Cards
+      renderCoursesGrid();
+
+      // Assignments Table (with filters)
+
+      document.getElementById('assignments-section').innerHTML = `
+        <div class="bg-white rounded-xl border border-gray-100 overflow-hidden">
+          <div class="p-8 border-b border-gray-50">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <h3 class="font-semibold text-gray-900 text-xl">Upcoming Assignments</h3>
+              <div class="flex items-center gap-4">
+                <select id="assignment-status-filter" class="text-sm border rounded-md px-4 py-3 bg-white">
+                  <option value="all">All</option>
+                  <option value="pending">Pending</option>
+                  <option value="submitted">Submitted</option>
+                  <option value="late">Late</option>
+                </select>
+                <input id="assignment-search" type="text" placeholder="Search assignments..." class="text-base border rounded-md px-4 py-3" />
+                <button id="assignment-clear" class="text-base text-gray-500 hover:text-gray-700">Clear</button>
+                <button class="text-base text-emerald-600 font-medium hover:text-emerald-700">View All</button>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-base text-left">
+              <thead class="bg-gray-50/50 text-gray-500 font-medium">
+                <tr><th class="px-8 py-5">Course</th><th class="px-8 py-5">Assignment</th><th class="px-8 py-5">Due Date</th><th class="px-8 py-5">Status</th></tr>
+              </thead>
+              <tbody id="assignments-tbody" class="divide-y divide-gray-50"></tbody>
+            </table>
+          </div>
+        </div>
+      `;
+
+      // Filtering logic for assignments
+      function renderAssignmentsTable() {
+        const status = document.getElementById('assignment-status-filter').value;
+        const q = document.getElementById('assignment-search').value.trim().toLowerCase();
+        const filtered = assignments.filter(a => {
+          if (status !== 'all' && a.status !== status) return false;
+          if (!q) return true;
+          return (a.title + ' ' + a.course + ' ' + a.dueDate).toLowerCase().includes(q);
+        });
+        const rows = filtered.map(a => `
+          <tr class="hover:bg-gray-50/30 transition-colors">
+            <td class="px-8 py-5 font-medium text-gray-900">${a.course}</td>
+            <td class="px-8 py-5 text-gray-600">${a.title}</td>
+            <td class="px-8 py-5 text-gray-500">${a.dueDate}</td>
+            <td class="px-8 py-5">${getStatusBadge(a.status)}</td>
+          </tr>
+        `).join('');
+        document.getElementById('assignments-tbody').innerHTML = rows || `<tr><td class="px-6 py-4 text-gray-500" colspan="4">No assignments found.</td></tr>`;
+        lucide.createIcons();
+      }
+
+      document.getElementById('assignment-status-filter').addEventListener('change', renderAssignmentsTable);
+      document.getElementById('assignment-search').addEventListener('input', (e) => {
+        const v = e.target.value;
+        const global = document.getElementById('global-search');
+        const top = document.getElementById('assignment-filter-top-search');
+        if (global && global.value !== v) global.value = v;
+        if (top && top.value !== v) top.value = v;
+        renderAssignmentsTable();
+        renderCoursesGrid(v);
+      });
+      document.getElementById('assignment-clear').addEventListener('click', () => { document.getElementById('assignment-search').value = ''; document.getElementById('assignment-status-filter').value = 'all'; renderAssignmentsTable(); document.getElementById('global-search').value = ''; renderCoursesGrid(); });
+
+      // Top header filters - synchronize with bottom and trigger render
+      const topStatus = document.getElementById('assignment-filter-top-status');
+      const topSearch = document.getElementById('assignment-filter-top-search');
+      const topClear = document.getElementById('assignment-filter-top-clear');
+      if (topStatus && topSearch && topClear) {
+        topStatus.addEventListener('change', (e) => { document.getElementById('assignment-status-filter').value = e.target.value; renderAssignmentsTable(); });
+        topSearch.addEventListener('input', (e) => { document.getElementById('assignment-search').value = e.target.value; renderAssignmentsTable(); renderCoursesGrid(e.target.value); });
+        topClear.addEventListener('click', () => { document.getElementById('assignment-status-filter').value = 'all'; document.getElementById('assignment-search').value = ''; topStatus.value = 'all'; topSearch.value = ''; renderAssignmentsTable(); document.getElementById('global-search').value = ''; renderCoursesGrid(); });
+
+        // keep top inputs updated when bottom inputs change
+        document.getElementById('assignment-status-filter').addEventListener('change', (e) => { topStatus.value = e.target.value; });
+        document.getElementById('assignment-search').addEventListener('input', (e) => { topSearch.value = e.target.value; });
+      }
+
+      // global header search sync: filter both assignments and courses
+      const globalSearchInput = document.getElementById('global-search');
+      if (globalSearchInput) {
+        globalSearchInput.addEventListener('input', (e) => {
+          const v = e.target.value;
+          const assignmentSearch = document.getElementById('assignment-search');
+          const topSearchEl = document.getElementById('assignment-filter-top-search');
+          if (assignmentSearch && assignmentSearch.value !== v) assignmentSearch.value = v;
+          if (topSearchEl && topSearchEl.value !== v) topSearchEl.value = v;
+          renderAssignmentsTable();
+          renderCoursesGrid(v);
+        });
+      }
+
+      // initial render of assignments
+      renderAssignmentsTable();
+      // initial render of courses (with no filter)
+      renderCoursesGrid();
+
+      // Placeholder for GradesCard (waiting for your code!)
+      document.getElementById('grades-section').innerHTML = `
+        <div class="bg-white rounded-xl border border-gray-100 p-8 h-full">
+          <h3 class="font-semibold text-gray-900 text-xl mb-6">Current Grades</h3>
+          <div class="space-y-4 text-base">
+            <div class="flex justify-between"><span class="text-gray-600">CS 301</span><span class="font-bold text-emerald-600">A-</span></div>
+            <div class="flex justify-between"><span class="text-gray-600">MATH 202</span><span class="font-bold text-emerald-600">B+</span></div>
+            <div class="flex justify-between"><span class="text-gray-600">DES 101</span><span class="font-bold text-emerald-600">A</span></div>
+            <div class="flex justify-between"><span class="text-gray-600">ENG 205</span><span class="font-bold text-amber-600">B</span></div>
+          </div>
+          <div class="mt-8 pt-6 border-t border-gray-100">
+            <div class="text-3xl font-bold text-gray-900">Overall GPA: <span class="text-emerald-600">3.8</span></div>
+          </div>
+        </div>
+      `;
+
+      // Initialize all icons
+      lucide.createIcons();
+    }
+
+    document.addEventListener('DOMContentLoaded', renderAll);
+  </script>
+</body>
+</html>
