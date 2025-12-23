@@ -134,3 +134,73 @@
   window.addEventListener("load", initSwiper);
 
 })();
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+    
+    // Initialize PureCounter
+    new PureCounter();
+    
+    // Faculty Filter Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const facultyMembers = document.querySelectorAll('.faculty-member');
+      
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          const filterValue = this.getAttribute('data-filter');
+          
+          facultyMembers.forEach(member => {
+            if (filterValue === 'all' || member.getAttribute('data-category') === filterValue) {
+              member.style.display = 'block';
+            } else {
+              member.style.display = 'none';
+            }
+          });
+        });
+      });
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: 'smooth'
+            });
+            
+            // Update active nav link
+            document.querySelectorAll('.navmenu ul li a').forEach(link => {
+              link.classList.remove('active');
+            });
+            this.classList.add('active');
+          }
+        });
+      });
+      
+      // Navbar scroll effect
+      window.addEventListener('scroll', function() {
+        const header = document.getElementById('header');
+        if (window.scrollY > 100) {
+          header.classList.add('sticky-top');
+        } else {
+          header.classList.remove('sticky-top');
+        }
+      });
+    });

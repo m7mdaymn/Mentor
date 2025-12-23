@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - Mentor Bootstrap Template</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+  <title>Mentor LMS - Complete Learning Management System</title>
+  <meta name="description" content="A comprehensive digital platform designed to enhance the teaching and learning experience">
+  <meta name="keywords" content="LMS, education, online courses, learning management, university">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -27,108 +27,94 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Mentor
-  * Template URL: https://bootstrapmade.com/mentor-free-education-bootstrap-theme/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+
 </head>
 
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="index.html" class="logo d-flex align-items-center me-auto">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">Mentor</h1>
+      <a href="#home" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename">Mentor LMS</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Home<br></a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="courses.html">Courses</a></li>
-          <li><a href="trainers.html">Trainers</a></li>
-          <li><a href="events.html">Events</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="#hero" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+           <li class="dropdown"><a href="#Features"><span>Features</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="#">Dropdown 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+            </ul>
+          </li>    
+          
+           <li class="dropdown"><a href="#"><span>Account</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+                <li class="dropdown"><a href="#"><span>Profile</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                  <li><a href="dashboard.html">Dashboard</a></li>
+                  <li><a href="dashboard.html">My Courses</a></li>
+                  <li><a href="dashboard.html">Grades</a></li>
+                  <li><a href="dashboard.html">Settings</a></li>
                 </ul>
               </li>
-              <li><a href="#">Dropdown 2</a></li>
-              <li><a href="#">Dropdown 3</a></li>
-              <li><a href="#">Dropdown 4</a></li>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="register.html">Register</a></li>
             </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
+          </li>       
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
-      <a class="btn-getstarted" href="courses.html">Get Started</a>
-
+      <a class="btn-getstarted" href="#contact">Contact Us</a>
     </div>
   </header>
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+<!-- Hero Section -->
+<section id="hero" class="hero section dark-background">
+  <img src="assets/img/hero-bg.jpg" alt="Students studying in university library" data-aos="fade-in">
+  <div class="container">
+    <h2 data-aos="fade-up" data-aos-delay="100">Empowering <br>Through Digital Innovation</h2>
+    <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+      <a href="#courses" class="btn-get-started">Explore Courses</a>
+    </div>
+  </div>
+</section>
+<!-- /Hero Section -->
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
-
-      <div class="container">
-        <h2 data-aos="fade-up" data-aos-delay="100">Learning Today,<br>Leading Tomorrow</h2>
-        <p data-aos="fade-up" data-aos-delay="200">We are team of talented designers making websites with Bootstrap</p>
-        <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
-          <a href="courses.html" class="btn-get-started">Get Started</a>
-        </div>
-      </div>
-
-    </section><!-- /Hero Section -->
 
     <!-- About Section -->
-    <section id="about" class="about section">
-
+    <section id="about" class="page-section light-bg">
       <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
-          </div>
-
-          <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Voluptatem dignissimos provident quasi corporis</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-              <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-            </ul>
-            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
-          </div>
-
+        <div class="section-title" data-aos="fade-up">
+          <h2>About Our Learning Management System</h2>
+          <p>A comprehensive digital platform designed to enhance the teaching and learning experience</p>
         </div>
-
-      </div>
-
-    </section><!-- /About Section -->
+        
+        <div class="row gy-4 align-items-center">
+          <div class="col-lg-6" data-aos="fade-right">
+            <img src="assets/img/about.jpg" class="img-fluid rounded" alt="Students collaborating on campus">
+          </div>
+          <div class="col-lg-6" data-aos="fade-left">
+            <h3>Transforming Education with Technology</h3>
+            <p class="fst-italic">
+              Our Learning Management System is built specifically for higher education, offering robust features that support both traditional and innovative teaching methodologies while ensuring accessibility and engagement for all students.
+            </p>
+            <ul class="list-unstyled">
+              <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Centralized access to course materials and resources</li>
+              <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Interactive learning tools and collaborative spaces</li>
+              <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Real-time progress tracking and academic analytics</li>
+              <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Mobile-friendly platform accessible anywhere, anytime</li>
+              <li class="mb-3"><i class="bi bi-check-circle-fill text-primary me-2"></i> Secure and reliable cloud-based infrastructure</li>
+            </ul>
+          </div>
+        </div>
+        
 
     <!-- Counts Section -->
     <section id="counts" class="section counts light-background">
@@ -171,325 +157,437 @@
 
     </section><!-- /Counts Section -->
 
-    <!-- Why Us Section -->
-    <section id="why-us" class="section why-us">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="why-box">
-              <h3>Why Choose Our Products?</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
-              <div class="text-center">
-                <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Why Box -->
-
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="col-xl-4">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-gem"></i>
-                  <h4>Ullamco laboris ladore pan</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-inboxes"></i>
-                  <h4>Labore consequatur incidid dolore</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
-          </div>
-
-        </div>
-
       </div>
-
-    </section><!-- /Why Us Section -->
+    </section><!-- /About Section -->
 
     <!-- Features Section -->
-    <section id="features" class="features section">
-
+    <section id="features" class="page-section">
       <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="features-item">
-              <i class="bi bi-eye" style="color: #ffbb2c;"></i>
-              <h3><a href="" class="stretched-link">Lorem Ipsum</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="200">
-            <div class="features-item">
-              <i class="bi bi-infinity" style="color: #5578ff;"></i>
-              <h3><a href="" class="stretched-link">Dolor Sitema</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="300">
-            <div class="features-item">
-              <i class="bi bi-mortarboard" style="color: #e80368;"></i>
-              <h3><a href="" class="stretched-link">Sed perspiciatis</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="features-item">
-              <i class="bi bi-nut" style="color: #e361ff;"></i>
-              <h3><a href="" class="stretched-link">Magni Dolores</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="features-item">
-              <i class="bi bi-shuffle" style="color: #47aeff;"></i>
-              <h3><a href="" class="stretched-link">Nemo Enim</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="features-item">
-              <i class="bi bi-star" style="color: #ffa76e;"></i>
-              <h3><a href="" class="stretched-link">Eiusmod Tempor</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="700">
-            <div class="features-item">
-              <i class="bi bi-x-diamond" style="color: #11dbcf;"></i>
-              <h3><a href="" class="stretched-link">Midela Teren</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="800">
-            <div class="features-item">
-              <i class="bi bi-camera-video" style="color: #4233ff;"></i>
-              <h3><a href="" class="stretched-link">Pira Neve</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="900">
-            <div class="features-item">
-              <i class="bi bi-command" style="color: #b2904f;"></i>
-              <h3><a href="" class="stretched-link">Dirada Pack</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1000">
-            <div class="features-item">
-              <i class="bi bi-dribbble" style="color: #b20969;"></i>
-              <h3><a href="" class="stretched-link">Moton Ideal</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1100">
-            <div class="features-item">
-              <i class="bi bi-activity" style="color: #ff5828;"></i>
-              <h3><a href="" class="stretched-link">Verdo Park</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
-          <div class="col-lg-3 col-md-4" data-aos="fade-up" data-aos-delay="1200">
-            <div class="features-item">
-              <i class="bi bi-brightness-high" style="color: #29cc61;"></i>
-              <h3><a href="" class="stretched-link">Flavor Nivelanda</a></h3>
-            </div>
-          </div><!-- End Feature Item -->
-
+        <div class="section-title" data-aos="fade-up">
+          <h2>Platform Features</h2>
+          <p>Comprehensive tools for effective teaching and learning</p>
         </div>
-
+        
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-icon-box">
+              <i class="bi bi-cloud-arrow-up text-warning"></i>
+              <h4>Cloud Storage</h4>
+              <p>Secure cloud storage for all course materials, accessible from any device.</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-icon-box">
+              <i class="bi bi-camera-video text-primary"></i>
+              <h4>Video Lectures</h4>
+              <p>Recorded and live video lectures with interactive capabilities.</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-icon-box">
+              <i class="bi bi-chat-left-text text-danger"></i>
+              <h4>Discussion Forums</h4>
+              <p>Interactive forums for student-instructor and peer-to-peer discussions.</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-icon-box">
+              <i class="bi bi-clipboard-check text-purple"></i>
+              <h4>Assignment Manager</h4>
+              <p>Streamlined assignment submission, grading, and feedback system.</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="feature-icon-box">
+              <i class="bi bi-calendar-week text-info"></i>
+              <h4>Course Calendar</h4>
+              <p>Integrated calendar with deadlines, events, and important dates.</p>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+            <div class="feature-icon-box">
+              <i class="bi bi-file-text text-warning"></i>
+              <h4>Grade Book</h4>
+              <p>Comprehensive grade tracking and reporting system.</p>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section><!-- /Features Section -->
 
     <!-- Courses Section -->
-    <section id="courses" class="courses section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Courses</h2>
-        <p>Popular Courses</p>
-      </div><!-- End Section Title -->
-
+    <section id="courses" class="page-section light-bg">
       <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="assets/img/course-1.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Web Development</p>
-                  <p class="price">$169</p>
-                </div>
-
-                <h3><a href="course-details.html">Website Design</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Antonio</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;50
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;65
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="course-item">
-              <img src="assets/img/course-2.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Marketing</p>
-                  <p class="price">$250</p>
-                </div>
-
-                <h3><a href="course-details.html">Search Engine Optimization</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-2-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Lana</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;35
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;42
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="course-item">
-              <img src="assets/img/course-3.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Content</p>
-                  <p class="price">$180</p>
-                </div>
-
-                <h3><a href="course-details.html">Copywriting</a></h3>
-                <p class="description">Et architecto provident deleniti facere repellat nobis iste. Id facere quia quae dolores dolorem tempore.</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <img src="assets/img/trainers/trainer-3-2.jpg" class="img-fluid" alt="">
-                    <a href="" class="trainer-link">Brandon</a>
-                  </div>
-                  <div class="trainer-rank d-flex align-items-center">
-                    <i class="bi bi-person user-icon"></i>&nbsp;20
-                    &nbsp;&nbsp;
-                    <i class="bi bi-heart heart-icon"></i>&nbsp;85
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End Course Item-->
-
+        <div class="section-title" data-aos="fade-up">
+          <h2>Featured Courses</h2>
+          <p>Popular Courses This Semester</p>
         </div>
-
+        
+        <div class="row gy-4">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="course-item">
+              <div class="card h-100">
+                <div class="card-img-top overflow-hidden">
+                  <img src="assets/img/course-1.jpg" class="img-fluid" alt="Computer Science course">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="badge bg-primary">Computer Science</span>
+                    <span class="text-muted">CS-401</span>
+                  </div>
+                  <h5 class="card-title">Data Structures & Algorithms</h5>
+                  <p class="card-text">Master fundamental data structures and algorithm design for efficient problem solving in software development.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div class="d-flex align-items-center">
+                      <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle me-2" width="30" alt="Dr. Mohamed Ayman">
+                      <small>Dr. Mohamed Ayman</small>
+                    </div>
+                    <div>
+                      <small class="me-3"><i class="bi bi-person"></i> 85</small>
+                      <small><i class="bi bi-star-fill text-warning"></i> 4.8</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="course-item">
+              <div class="card h-100">
+                <div class="card-img-top overflow-hidden">
+                  <img src="assets/img/course-2.jpg" class="img-fluid" alt="Business Administration course">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="badge bg-success">Business</span>
+                    <span class="text-muted">BUS-305</span>
+                  </div>
+                  <h5 class="card-title">Digital Marketing Strategy</h5>
+                  <p class="card-text">Learn modern marketing techniques including SEO, social media marketing, and data-driven campaign strategies.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div class="d-flex align-items-center">
+                      <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle me-2" width="30" alt="Dr. Mohamed Ayman">
+                      <small>Prof. Mohamed Ayman</small>
+                    </div>
+                    <div>
+                      <small class="me-3"><i class="bi bi-person"></i> 72</small>
+                      <small><i class="bi bi-star-fill text-warning"></i> 4.6</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="course-item">
+              <div class="card h-100">
+                <div class="card-img-top overflow-hidden">
+                  <img src="assets/img/course-3.jpg" class="img-fluid" alt="Engineering course">
+                </div>
+                <div class="card-body">
+                  <div class="d-flex justify-content-between mb-3">
+                    <span class="badge bg-warning">Engineering</span>
+                    <span class="text-muted">ENG-212</span>
+                  </div>
+                  <h5 class="card-title">Sustainable Energy Systems</h5>
+                  <p class="card-text">Explore renewable energy technologies and sustainable system design for a greener future.</p>
+                  <div class="d-flex justify-content-between align-items-center mt-4">
+                    <div class="d-flex align-items-center">
+                      <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle me-2" width="30" alt="Dr. Mohamed Ayman">
+                      <small>Dr. Mohamed Ayman</small>
+                    </div>
+                    <div>
+                      <small class="me-3"><i class="bi bi-person"></i> 64</small>
+                      <small><i class="bi bi-star-fill text-warning"></i> 4.9</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section><!-- /Courses Section -->
 
-    <!-- Trainers Index Section -->
-    <section id="trainers-index" class="section trainers-index">
+    <!-- Faculty Section -->
+    <section id="faculty" class="page-section">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Our Faculty</h2>
+          <p>Meet our distinguished professors and instructors</p>
+        </div>
+        
+        <div class="filter-buttons" data-aos="fade-up">
+          <button class="filter-btn active" data-filter="all">All Departments</button>
+          <button class="filter-btn" data-filter="cs">Computer Science</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+          <button class="filter-btn" data-filter="engineering">Engineering</button>
+        </div>
+        
+        <div class="row gy-4" id="faculty-container">
+          <div class="col-lg-4 col-md-6 faculty-member" data-aos="fade-up" data-category="cs">
+            <div class="card h-100">
+              <div class="card-img-top text-center pt-4">
+                <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle" width="120" alt="Dr. Mohamed Ayman">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Dr. Mohamed Ayman</h5>
+                <p class="text-primary mb-3">Professor of Computer Science</p>
+                <p class="card-text">Specializes in artificial intelligence and machine learning with 15+ years of teaching experience and multiple research publications.</p>
+                <div class="social-icons mt-3">
+                  <a href="#" class="me-2"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-google"></i></a>
+                  <a href="#"><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 faculty-member" data-aos="fade-up" data-aos-delay="100" data-category="business">
+            <div class="card h-100">
+              <div class="card-img-top text-center pt-4">
+                <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle" width="120" alt="Prof. Mohamed Ayman">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Prof. Mohamed Ayman</h5>
+                <p class="text-primary mb-3">Chair, Business Administration</p>
+                <p class="card-text">Expert in digital transformation and entrepreneurship, with industry experience in Silicon Valley tech companies.</p>
+                <div class="social-icons mt-3">
+                  <a href="#" class="me-2"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-google"></i></a>
+                  <a href="#"><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4 col-md-6 faculty-member" data-aos="fade-up" data-aos-delay="200" data-category="engineering">
+            <div class="card h-100">
+              <div class="card-img-top text-center pt-4">
+                <img src="assets/img/trainers/1713456829530.jpeg" class="rounded-circle" width="120" alt="Dr. Mohamed Ayman">
+              </div>
+              <div class="card-body text-center">
+                <h5 class="card-title">Dr. Mohamed Ayman</h5>
+                <p class="text-primary mb-3">Environmental Engineering Chair</p>
+                <p class="card-text">Leading researcher in sustainable technologies and recipient of the Green Innovation Award 2023.</p>
+                <div class="social-icons mt-3">
+                  <a href="#" class="me-2"><i class="bi bi-twitter-x"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-linkedin"></i></a>
+                  <a href="#" class="me-2"><i class="bi bi-google"></i></a>
+                  <a href="#"><i class="bi bi-envelope"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Faculty Section -->
+
+    <!-- Events Section -->
+    <section id="events" class="page-section light-bg">
+      <div class="container">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Upcoming Events</h2>
+          <p>Academic and professional development opportunities</p>
+        </div>
+        
+        <div class="row gy-4">
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="event-card">
+              <div class="event-img">
+                <img src="assets/img/events-item-1.jpg" alt="Introduction to web design">
+              </div>
+              <div class="event-content">
+                <h4><a href="#">Introduction to Web Design</a></h4>
+                <p class="text-muted"><i class="bi bi-calendar-event me-2"></i>Sunday, September 26th at 7:00 pm</p>
+                <p>Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <a href="#" class="btn-primary-custom btn-sm">Register Now</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="event-card">
+              <div class="event-img">
+                <img src="assets/img/events-item-2.jpg" alt="Marketing Strategies">
+              </div>
+              <div class="event-content">
+                <h4><a href="#">Marketing Strategies Workshop</a></h4>
+                <p class="text-muted"><i class="bi bi-calendar-event me-2"></i>Sunday, November 15th at 7:00 pm</p>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <a href="#" class="btn-primary-custom btn-sm">Register Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /Events Section -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing section">
 
       <div class="container">
 
-        <div class="row">
+        <div class="row gy-3">
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="member">
-              <img src="assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Walter White</h4>
-                <span>Web Development</span>
-                <p>
-                  Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+          <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="pricing-item">
+              <h3>Free</h3>
+              <h4><sup>$</sup>0<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li class="na">Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div><!-- End Pricing Item -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="member">
-              <img src="assets/img/trainers/trainer-2.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>Sarah Jhinson</h4>
-                <span>Marketing</span>
-                <p>
-                  Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+          <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing-item featured">
+              <h3>Business</h3>
+              <h4><sup>$</sup>19<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li class="na">Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div><!-- End Pricing Item -->
 
-          <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="member">
-              <img src="assets/img/trainers/trainer-3.jpg" class="img-fluid" alt="">
-              <div class="member-content">
-                <h4>William Anderson</h4>
-                <span>Content</span>
-                <p>
-                  Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
-                </p>
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter-x"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
+          <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="pricing-item">
+              <h3>Developer</h3>
+              <h4><sup>$</sup>29<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
               </div>
             </div>
-          </div><!-- End Team Member -->
+          </div><!-- End Pricing Item -->
+
+          <div class="col-xl-3 col-lg-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="pricing-item">
+              <span class="advanced">Advanced</span>
+              <h3>Ultimate</h3>
+              <h4><sup>$</sup>49<span> / month</span></h4>
+              <ul>
+                <li>Aida dere</li>
+                <li>Nec feugiat nisl</li>
+                <li>Nulla at volutpat dola</li>
+                <li>Pharetra massa</li>
+                <li>Massa ultricies mi</li>
+              </ul>
+              <div class="btn-wrap">
+                <a href="#" class="btn-buy">Buy Now</a>
+              </div>
+            </div>
+          </div><!-- End Pricing Item -->
 
         </div>
 
       </div>
 
-    </section><!-- /Trainers Index Section -->
+    </section><!-- /Pricing Section -->
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-title" data-aos="fade-up">
+          <h2>Contact Us</h2>
+          <p>Get in touch with our team</p>
+        </div>
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <i class="bi bi-geo-alt flex-shrink-0"></i>
+              <div>
+                <h3>Address</h3>
+                <p>A108 Adam Street, New York, NY 535022</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <i class="bi bi-telephone flex-shrink-0"></i>
+              <div>
+                <h3>Call Us</h3>
+                <p>+1 5589 55488 55</p>
+              </div>
+            </div><!-- End Info Item -->
+
+            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
+              <i class="bi bi-envelope flex-shrink-0"></i>
+              <div>
+                <h3>Email Us</h3>
+                <p>info@example.com</p>
+              </div>
+            </div><!-- End Info Item -->
+
+          </div>
+
+          <div class="col-lg-8">
+            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+
+                  <button type="submit">Send Message</button>
+                </div>
+
+              </div>
+            </form>
+          </div><!-- End Contact Form -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section -->
 
   </main>
 
@@ -558,21 +656,20 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Designed by <a href="https://m7mdaymn.github.io/portfolio/">Mohamed Ayman
+        </a>
       </div>
     </div>
 
   </footer>
 
-  <!-- Scroll Top -->
+    <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
-
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
