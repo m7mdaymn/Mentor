@@ -56,7 +56,7 @@
             <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
           </button>
           <div class="w-10 h-10 rounded-full bg-emerald-100 border-2 border-emerald-200 overflow-hidden">
-            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Alex" alt="Profile" class="w-full h-full object-cover" />
+            <img src="/assets/img/team/muhmd1.jpeg" alt="Profile" class="w-full h-full object-cover" />
           </div>
         </div>
       </header>
@@ -113,10 +113,10 @@
       { icon: 'shield', label: 'Admin', active: false, href: 'Courses.html?admin=true' }
     ];
 
-    const bottomNavItems = [
-      { icon: 'settings', label: 'Settings', active: false },
-      { icon: 'log-out', label: 'Sign Out', active: false }
-    ];
+const bottomNavItems = [
+  { icon: 'settings', label: 'Settings', href: '/settings', active: false },
+  { icon: 'log-out',  label: 'Sign Out',  href: '/',        active: false }
+];
 
     function createNavItem(item) {
       const activeClasses = item.active
